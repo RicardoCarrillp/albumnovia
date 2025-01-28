@@ -73,6 +73,26 @@ export default {
           img3: require('@/assets/notfound.jpg'),
           isOpen: false,
         },
+        {
+          img1: require('@/assets/notfound.jpg'),
+          img2: require('@/assets/notfound.jpg'),
+          img3: require('@/assets/notfound.jpg'),
+          isOpen: false,
+        },
+        {
+          img1: require('@/assets/notfound.jpg'),
+          img2: require('@/assets/notfound.jpg'),
+          img3: require('@/assets/notfound.jpg'),
+          title: "PICNIC",
+          isOpen: false,
+        },
+        {
+          img1: require('@/assets/notfound.jpg'),
+          img2: require('@/assets/notfound.jpg'),
+          img3: require('@/assets/notfound.jpg'),
+          title: "MUSEOS",
+          isOpen: false,
+        },
       ],
     };
   },
