@@ -176,9 +176,9 @@ body {
   top: 55%;
   left: 41%;
 }
-.album--open {
+/* .album--open {
   transform: translate(69px, 0) rotateX(21deg) rotateY(0deg) rotateZ(31deg) scale(0.6);
-}
+} */
 .album__paper {
   position: absolute;
   top: 0;
