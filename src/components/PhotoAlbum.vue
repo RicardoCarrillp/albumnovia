@@ -9,7 +9,7 @@
           @click="topOpen">
           <div
             class="album__page front"
-            :style="{transform: `translateZ(0.${items.length + 1}px)`}">
+            :style="{transform: `translateZ(${items.length + 1}px)`}">
             <div>
               <p class="txt-text">TU Y YO</p>
               <p class="txt-text sub">♡</p>
@@ -26,7 +26,7 @@
           @click="idx + 1 === items.length ? reset() : open(idx, page.isOpen)">
           <div
             class="album__page front"
-            :style="{transform: `translateZ(0.${items.length + 1 - (idx + 1)}px)`}">
+            :style="{transform: `translateZ(${items.length + 1 - (idx + 1)}px)`}">
             <div class="content">
               <div class="content__title">{{ page.title }}</div>
               <div class="content__img1">
@@ -58,6 +58,13 @@ export default {
           img2: require('@/assets/recuerdo2.jpeg'),
           img3: require('@/assets/recuerdo1.jpeg'),
           title: 'RECUERDOS',
+          isOpen: false,
+        },
+        {
+          img1: require('@/assets/primer1.jpg'),
+          img2: require('@/assets/primer2.jpg'),
+          img3: require('@/assets/primer3.jpg'),
+          title: 'PRIMER MES',
           isOpen: false,
         },
         {
@@ -102,6 +109,13 @@ export default {
           title: "GIMNASIO",
           isOpen: false,
         },
+        {
+          img1: require('@/assets/dosmeses3.jpg'),
+          img2: require('@/assets/dosmeses2.jpg'),
+          img3: require('@/assets/dosmeses1.jpg'),
+          title: "SEGUNDO MES",
+          isOpen: false,
+        }
       ],
     };
   },
@@ -110,7 +124,7 @@ export default {
       this.isOpenedTop = !this.isOpenedTop;
     },
     open(idx, isOpen) {
-      if (this.isOpenedTop) {
+      if (this.isOpenedTop) {        
         this.items[idx].isOpen = !isOpen;
       }
     },
@@ -176,9 +190,9 @@ body {
   top: 55%;
   left: 41%;
 }
-/* .album--open {
-  transform: translate(69px, 0) rotateX(21deg) rotateY(0deg) rotateZ(31deg) scale(0.6);
-} */
+  .album--open {
+    transform: translate(20px, 0) rotateX(10deg) rotateY(0deg) rotateZ(0) scale(0.6);
+  }
 .album__paper {
   position: absolute;
   top: 0;
