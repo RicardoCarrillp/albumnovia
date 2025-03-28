@@ -2,14 +2,9 @@
   <div id="app">
     <div class="container">
       <div class="album" :class="{'album--open': isOpenedTop}">
-        <div
-          class="album__paper"
-          :style="{zIndex: isOpenedTop ? 0 : items.length + 1 }"
-          :class="{'open': isOpenedTop}"
+        <div class="album__paper" :style="{zIndex: isOpenedTop ? 0 : items.length + 1 }" :class="{'open': isOpenedTop}"
           @click="topOpen">
-          <div
-            class="album__page front"
-            :style="{transform: `translateZ(${items.length + 1}px)`}">
+          <div class="album__page front" :style="{transform: `translateZ(${items.length + 1}px)`}">
             <div>
               <p class="txt-text">TU Y YO</p>
               <p class="txt-text sub">♡</p>
@@ -17,24 +12,25 @@
           </div>
           <div class="album__page back" :style="{zIndex: 0}"></div>
         </div>
-        <div
-          class="album__paper"
-          v-for="(page, idx) in items"
-          :key="idx + 1"
-          :style="{zIndex: page.isOpen ? idx + 1 : items.length + 1 - (idx + 1) }"
-          :class="{'open': page.isOpen}"
+        <div class="album__paper" v-for="(page, idx) in items" :key="idx + 1"
+          :style="{zIndex: page.isOpen ? idx + 1 : items.length + 1 - (idx + 1) }" :class="{'open': page.isOpen}"
           @click="idx + 1 === items.length ? reset() : open(idx, page.isOpen)">
-          <div
-            class="album__page front"
-            :style="{transform: `translateZ(${items.length + 1 - (idx + 1)}px)`}">
+          <div class="album__page front" :style="{transform: `translateZ(${items.length + 1 - (idx + 1)}px)`}">
             <div class="content">
               <div class="content__title">{{ page.title }}</div>
-              <div class="content__img1">
+              <div  v-if="page.img1" class="content__img1">
                 <img :src="page.img1" />
                 <div class="content__text">{{ idx + 1 }}</div>
               </div>
               <div class="content__img2"><img :src="page.img2" /></div>
               <div class="content__img3"><img :src="page.img3" /></div>
+              <div v-if="page.video" class="content__video">
+                <video controls>
+                  <source :src="page.video" type="video/mp4" />
+                  Tu navegador no soporta el elemento de video.
+                </video>
+                <div class="content__text_video">{{ idx + 1 }}</div>
+              </div>
             </div>
           </div>
           <div class="album__page back" :style="{zIndex: idx + 1}"></div>
@@ -114,6 +110,13 @@ export default {
           img2: require('@/assets/dosmeses2.jpg'),
           img3: require('@/assets/dosmeses1.jpg'),
           title: "SEGUNDO MES",
+          isOpen: false,
+        },
+        {
+          img2: require('@/assets/Bolos.jpg'),
+          img3: require('@/assets/Bolos3.jpg'),
+          video: require('@/assets/Bolosvideo.mp4'),
+          title: "BOLOS",
           isOpen: false,
         }
       ],
@@ -331,6 +334,24 @@ body {
   border: 10px solid #fff;
   box-sizing: border-box;
 }
+.content__video {
+  grid-row: 1 / 6;
+  grid-column: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  flex-direction: column;
+}
+
+.content__video video {
+  margin: auto;
+  width: 90%;
+  border: 10px solid #fff;
+  box-sizing: border-box;
+  border-radius: 10px; /* Opcional: bordes redondeados */
+  background: black; /* Evita el fondo blanco en algunos navegadores */
+}
 .content__img3 {
   grid-row: 2;
   grid-column: 2;
@@ -345,6 +366,12 @@ body {
   box-sizing: border-box;
 }
 .content__text {
+  width: 100%;
+  padding: 30px;
+  font-size: 30px;
+  box-sizing: border-box;
+}
+.content__text_video {
   width: 100%;
   padding: 30px;
   font-size: 30px;
