@@ -118,6 +118,13 @@ export default {
           video: require('@/assets/Bolosvideo.mp4'),
           title: "BOLOS",
           isOpen: false,
+        },
+        {
+          img2: require('@/assets/recientes.jpg'),
+          img3: require('@/assets/recientes3.jpg'),
+          img1: require('@/assets/recientes2.jpg'),
+          title: "ULTIMOS MESES",
+          isOpen: false,
         }
       ],
     };
